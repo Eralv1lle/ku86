@@ -264,7 +264,7 @@
 
   
     @keyframes scroll {
-        100% { transform: translateX(-990px); }
+        100% { transform: translateX(-1980px); }
     }
     
     .card-back p {

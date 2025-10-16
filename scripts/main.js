@@ -486,3 +486,61 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Анимация появления временной шкалы
+function animateTimeline() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 200);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    timelineItems.forEach(item => {
+        observer.observe(item);
+    });
+}
+
+// Вызовите функцию после загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+    animateTimeline();
+});
+
+
+
+
+
+function initProjectsAccordion() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const accordionItem = this.parentElement;
+            const accordionContent = this.nextElementSibling;
+            const isActive = this.classList.contains('active');
+
+            document.querySelectorAll('.accordion-header.active').forEach(activeHeader => {
+                if (activeHeader !== this) {
+                    activeHeader.classList.remove('active');
+                    activeHeader.nextElementSibling.classList.remove('active');
+                }
+            });
+            
+            if (!isActive) {
+                this.classList.add('active');
+                accordionContent.classList.add('active');
+            } else {
+                this.classList.remove('active');
+                accordionContent.classList.remove('active');
+            }
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initProjectsAccordion();
+});

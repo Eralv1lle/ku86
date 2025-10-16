@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БПЛА | ООО "ЮНИКОМ"</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        section {
+            opacity: 1;
+        }
+
+        .product-container {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 0 20px;
+        }
+
+        .product-content {
+            background: white;
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+        }
+
+        .product-title {
+            color: var(--primary); 
+            margin-bottom: 30px; 
+            text-align: center; 
+            font-size: 32px; 
+        }
+
+        .product-section { 
+            margin-bottom: 40px; 
+        }
+
+        .product-section h2 { 
+            color: var(--secondary); 
+            margin-bottom: 20px; 
+            font-size: 24px; 
+            border-left: 4px solid var(--accent); 
+            padding-left: 15px; 
+        }
+
+        .product-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 20px; 
+            margin: 30px 0;
+            place-items: center;
+        }
+
+        .product-image { 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+        }
+
+        .product-image img { 
+            width: 100%; 
+            height: 250px; 
+            object-fit: cover; 
+            transition: transform 0.3s ease; 
+        }
+
+        .product-image:hover img { 
+            transform: scale(1.05); 
+        }
+
+        .specs-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 20px 0; 
+        }
+
+        .specs-table th, .specs-table td { 
+            padding: 12px 15px; 
+            text-align: left; 
+            border-bottom: 1px solid #eee; 
+        }
+
+        .specs-table th { 
+            background: var(--gray); 
+            color: var(--primary); 
+            font-weight: 600; 
+        }
+
+        .product-back { 
+            display: inline-flex; 
+            align-items: center; 
+            margin-top: 40px; 
+            color: var(--accent);
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: opacity 0.3s; 
+            padding: 10px 20px; 
+            border: 2px solid var(--accent); 
+            border-radius: 6px; 
+        }
+
+        .product-back:hover { 
+            opacity: 0.8; 
+            background: rgba(230, 126, 34, 0.1); 
+        }
+
+        .product-features { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+            margin: 30px 0; 
+        }
+
+        .feature-card { 
+            background: var(--gray); 
+            padding: 20px; 
+            border-radius: 8px; 
+            border-left: 4px solid var(--accent); 
+        }
+
+        @media (max-width: 768px) { 
+            .product-content { padding: 25px; } 
+            .product-title { font-size: 28px; } 
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.jpg" alt="ЮНИКОМ">
+                </a>
+                <div class="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="section">
+            <div class="product-container">
+                <div class="product-content">
+                    <h1 class="product-title">Комплексы для подготовки операторов БПЛА</h1>
+                    
+                    <div class="product-section">
+                        <h2>Современное образование в сфере беспилотных технологий</h2>
+                        <p>В 2024 году нашей Компанией были осуществлены проекты по поставке в образовательные учреждения данного оборудования.</p>
+                        <p>Данные комплексы позволят обучить детей навыкам пилотирования, сборки и настройки БПЛА, а также познакомить обучающихся с текущим состоянием и перспективами индустрии беспилотных летательных аппаратов.</p>
+                    </div>
+
+                    <div class="product-gallery">
+                        <div class="product-image">
+                            <img src="images/products/bpla/drone1.jpg" alt="БПЛА комплекс">
+                        </div>
+                        <div class="product-image">
+                            <img src="images/products/bpla/drone2.jpg" alt="Квадрокоптер">
+                        </div>
+                        <div class="product-image">
+                            <img src="images/products/bpla/drone3.jpg" alt="Обучение пилотированию">
+                        </div>
+                    </div>
+
+                    <div class="product-section">
+                        <h2>Этапы обучения</h2>
+                        <div class="product-features">
+                            <div class="feature-card">
+                                <h3>Изучение устройства</h3>
+                                <p>Изучение устройства и конструкции БПЛА квадрокоптерного типа, навыки сборки и ремонта</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <h3>Пилотирование</h3>
+                                <p>Управление реальными БПЛА в безопасном "кубе", исключающем риски</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <h3>Программирование</h3>
+                                <p>Обучение базовым навыкам программирования полётов БПЛА (по дополнительному запросу)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-section">
+                        <h2>Состав комплекса</h2>
+                        <ul>
+                            <li><strong>Бессрочная лицензия на ПО</strong> - симулятор-тренажер для безопасного обучения</li>
+                            <li><strong>Очки FPV</strong> - 48-канальный приемник, разрешение 1280×720</li>
+                            <li><strong>Квадрокоптер Happymodel Mobula6</strong> - колесная база 65 мм, вес 28 г</li>
+                            <li><strong>Кейс защитный ударопрочный</strong></li>
+                            <li><strong>Радиопередатчик Radio Master TX12 MK II</strong></li>
+                            <li><strong>Ноутбук для работы</strong> - Intel Core i7, NVIDIA RTX 4060</li>
+                            <li><strong>Дополнительные модули</strong> - трасса и защитный куб 3×3×3 метра</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-section">
+                        <h2>Дополнительное оборудование</h2>
+                        <p><strong>По запросу мы можем включить в комплект поставки:</strong></p>
+                        <ul>
+                            <li>Интерактивная панель для проведения занятий</li>
+                            <li>Дополнительные запасные части для дронов</li>
+                            <li>Возможность поставки отдельных модулей</li>
+                            <li>Продвинутые модули для изучения программирования дронов</li>
+                        </ul>
+                    </div>
+
+                    <a href="index.html#catalog" class="product-back">Вернуться в каталог</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__logo">
+                    <img src="images/logo.jpg" alt="ЮНИКОМ">
+                    <p>Вас с нами неминуемо ждет успех!</p>
+                </div>
+                <div class="footer__contacts">
+                    <h4>Контакты</h4>
+                    <p>г. Сургут, ул. Маяковского 57,<br>4 корпус, оф. 496</p>
+                    <p>Тел.: (3462) 609-700</p>
+                    <p>Email: OOOKU86@yandex.ru</p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 ООО "ЮНИКОМ". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
