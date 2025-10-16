@@ -252,39 +252,65 @@ document.addEventListener('DOMContentLoaded', function() {
     const dotsContainer = document.querySelector('.social__dots');
     
     let currentIndex = 0;
+    let isAnimating = false;
     const itemWidth = 100;
     
     items.forEach((_, index) => {
         const dot = document.createElement('div');
         dot.classList.add('social__dot');
         if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
+        dot.addEventListener('click', () => {
+            if (!isAnimating) {
+                goToSlide(index);
+            }
+        });
         dotsContainer.appendChild(dot);
     });
     
     const dots = document.querySelectorAll('.social__dot');
     
     function goToSlide(index) {
+        isAnimating = true;
         currentIndex = index;
+        
+        track.style.transition = 'transform 0.5s ease';
         track.style.transform = `translateX(-${currentIndex * itemWidth}%)`;
         
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === currentIndex);
         });
+        
+        setTimeout(() => {
+            isAnimating = false;
+        }, 500);
     }
     
     prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
+        if (isAnimating) return;
+        
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = items.length - 1;
+        }
         goToSlide(currentIndex);
     });
     
     nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
+        if (isAnimating) return;
+        
+        if (currentIndex < items.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0;
+        }
         goToSlide(currentIndex);
     });
     
     let autoSlideInterval = setInterval(() => {
-        nextBtn.click();
+        if (!isAnimating) {
+            nextBtn.click();
+        }
     }, 5000);
     
     const sliderContainer = document.querySelector('.timeline');
@@ -294,7 +320,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     sliderContainer.addEventListener('mouseleave', () => {
         autoSlideInterval = setInterval(() => {
-            nextBtn.click();
+            if (!isAnimating) {
+                nextBtn.click();
+            }
         }, 5000);
     });
     
@@ -311,6 +339,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }, {passive: true});
     
     function handleSwipe() {
+        if (isAnimating) return;
+        
         if (touchEndX < touchStartX - 50) {
             nextBtn.click();
         }
@@ -486,7 +516,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Анимация появления временной шкалы
 function animateTimeline() {
     const timelineItems = document.querySelectorAll('.timeline-item');
     
@@ -505,14 +534,9 @@ function animateTimeline() {
     });
 }
 
-// Вызовите функцию после загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
     animateTimeline();
 });
-
-
-
-
 
 function initProjectsAccordion() {
     const accordionHeaders = document.querySelectorAll('.accordion-header');

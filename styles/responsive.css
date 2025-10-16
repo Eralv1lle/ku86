@@ -470,3 +470,119 @@
     transition: none !important;
   }
 }
+
+
+@media (max-width: 768px) {
+    .accordion-header {
+        padding: 15px 20px;
+        gap: 15px;
+    }
+    
+    .project-number {
+        font-size: 16px;
+        min-width: 45px;
+        padding: 6px 10px;
+    }
+    
+    .project-title {
+        font-size: 14px;
+    }
+    
+    .accordion-content.active {
+        max-height: 2100px;
+        padding: 20px;
+    }
+    
+    .projects-intro {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .accordion-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .project-number {
+        align-self: flex-start;
+    }
+    
+    .accordion-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .accordion-header.active .accordion-icon {
+        transform: translateY(-50%) rotate(45deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline-history {
+        padding: 20px 0;
+    }
+    
+    .timeline-progress {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+    
+    .timeline-year {
+        flex: none;
+        margin-bottom: 15px;
+        align-self: flex-start;
+    }
+    
+    .timeline-content {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .timeline-achievements {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .achievement-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+    }
+    
+    .timeline-badges {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 576px) {
+    .history-title {
+        font-size: 28px;
+    }
+    
+    .timeline-content {
+        padding: 20px;
+    }
+    
+    .timeline-content h4 {
+        font-size: 18px;
+    }
+    
+    .achievement-card {
+        padding: 20px;
+    }
+    
+    .achievement-icon {
+        font-size: 32px;
+    }
+}
