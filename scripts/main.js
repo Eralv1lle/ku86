@@ -480,27 +480,38 @@ window.addEventListener('scroll', updateLogoProgress);
 window.addEventListener('load', updateLogoProgress);
 
 
-const initPartnersTrack = () => {
-  const track = document.querySelector('.partners-track__inner');
-  const originalCards = Array.from(document.querySelectorAll('.partner-card')).slice(0, 3);
-  
-  originalCards.forEach(card => {
-    const clone = card.cloneNode(true);
-    track.appendChild(clone);
-  });
+const initPartnersTracks = () => {
+    const tracks = document.querySelectorAll('.partners-track__inner');
+    const partnerCards = document.querySelectorAll('.partner-card');
 
-  document.querySelectorAll('.partner-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      track.style.animationPlayState = 'paused';
+    tracks.forEach(track => {
+        track.addEventListener('mouseenter', () => {
+            track.style.animationPlayState = 'paused';
+        });
+        
+        track.addEventListener('mouseleave', () => {
+            track.style.animationPlayState = 'running';
+        });
     });
     
-    card.addEventListener('mouseleave', () => {
-      track.style.animationPlayState = 'running';
+    partnerCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            const parentTrack = card.closest('.partners-track__inner');
+            if (parentTrack) {
+                parentTrack.style.animationPlayState = 'paused';
+            }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            const parentTrack = card.closest('.partners-track__inner');
+            if (parentTrack) {
+                parentTrack.style.animationPlayState = 'running';
+            }
+        });
     });
-  });
 };
 
-document.addEventListener('DOMContentLoaded', initPartnersTrack);
+document.addEventListener('DOMContentLoaded', initPartnersTracks);
 
 document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {

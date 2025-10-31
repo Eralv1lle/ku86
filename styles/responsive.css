@@ -254,17 +254,34 @@
 
     .partner-card {
         width: 300px;
-        height: 115px;
+        height: 120px;
         margin: 0 15px;
+    }
+
+    .partner-card p {
+        font-size: 13px;
     }
 
     .partners-track::before, .partners-track::after {
         width: 30px;
     }
 
-  
-    @keyframes scroll {
-        100% { transform: translateX(-1980px); }
+    @keyframes scrollLeft {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-330px * 5));
+        }
+    }
+
+    @keyframes scrollRight {
+        0% {
+            transform: translateX(calc(-330px * 5));
+        }
+        100% {
+            transform: translateX(0);
+        }
     }
     
     .card-back p {
@@ -584,5 +601,37 @@
     
     .achievement-icon {
         font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .development-credits {
+        margin-top: 40px;
+        padding: 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 576px) {
+    .development-credits {
+        margin-top: 30px;
+        padding: 15px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero::before {
+        background-size: 60px 60px;
+        opacity: 0.06;
+        animation: floatLogos 45s linear infinite;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero::before {
+        background-size: 50px 50px;
+        opacity: 0.05;
+        animation: floatLogos 40s linear infinite;
     }
 }
