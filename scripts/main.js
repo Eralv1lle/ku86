@@ -579,3 +579,255 @@ function initProjectsAccordion() {
 document.addEventListener('DOMContentLoaded', function() {
     initProjectsAccordion();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const historySection = document.querySelector('.history-timeline');
+    
+    if (!historySection) return;
+    
+    const slides = historySection.querySelectorAll('.timeline-slide');
+    const sectionTitle = historySection.querySelector('.section__title');
+    
+    let currentSlide = 0;
+    let isLocked = false;
+    let isTransitioning = false;
+    let lockScrollPosition = 0;
+    let scrollAccumulator = 0;
+    let hasEnteredSection = false;
+    let scrollLockInterval = null;
+    
+    const TOTAL_SLIDES = slides.length;
+    const SCROLL_THRESHOLD = 50;
+    const isMobile = window.innerWidth <= 992;
+    
+    console.log('История: Инициализация, всего слайдов:', TOTAL_SLIDES, 'Мобилка:', isMobile);
+    
+    function showSlide(index) {
+        console.log('Показываем слайд:', index);
+        slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        updateDots(index);
+        updateButtons(index);
+    }
+
+    function createDots() {
+        const dotsContainer = document.querySelector('.timeline-dots');
+        if (!dotsContainer) return;
+        
+        dotsContainer.innerHTML = '';
+        
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'timeline-dot';
+            if (index === 0) dot.classList.add('active');
+            
+            dot.addEventListener('click', () => {
+                if (index !== currentSlide && !isTransitioning) {
+                    isTransitioning = true;
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, 600);
+                }
+            });
+            
+            dotsContainer.appendChild(dot);
+        });
+    }
+    
+    function updateDots(index) {
+        const dots = document.querySelectorAll('.timeline-dot');
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+    
+    function updateButtons(index) {
+        const prevBtn = document.querySelector('.timeline-prev');
+        const nextBtn = document.querySelector('.timeline-next');
+        
+        if (prevBtn) {
+            prevBtn.disabled = index === 0;
+        }
+        
+        if (nextBtn) {
+            nextBtn.disabled = index === TOTAL_SLIDES - 1;
+        }
+    }
+
+    createDots();
+    showSlide(0);
+
+    const prevBtn = document.querySelector('.timeline-prev');
+    const nextBtn = document.querySelector('.timeline-next');
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0 && !isTransitioning) {
+                isTransitioning = true;
+                currentSlide--;
+                showSlide(currentSlide);
+                console.log('Кнопка: предыдущий слайд', currentSlide);
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 600);
+            }
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < TOTAL_SLIDES - 1 && !isTransitioning) {
+                isTransitioning = true;
+                currentSlide++;
+                showSlide(currentSlide);
+                console.log('Кнопка: следующий слайд', currentSlide);
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 600);
+            }
+        });
+    }
+
+    if (!isMobile) {
+        function handleWheel(e) {
+            if (!isLocked) return;
+            
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (isTransitioning) return;
+            
+            scrollAccumulator += e.deltaY;
+            
+            if (scrollAccumulator > SCROLL_THRESHOLD) {
+                scrollAccumulator = 0;
+                
+                if (currentSlide < TOTAL_SLIDES - 1) {
+                    isTransitioning = true;
+                    currentSlide++;
+                    showSlide(currentSlide);
+                    
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, 700);
+                } else {
+                    console.log('ПОСЛЕДНИЙ СЛАЙД - ВЫХОДИМ ВНИЗ');
+                    unlockAndContinue(true);
+                }
+            } 
+            else if (scrollAccumulator < -SCROLL_THRESHOLD) {
+                scrollAccumulator = 0;
+                
+                if (currentSlide > 0) {
+                    isTransitioning = true;
+                    currentSlide--;
+                    showSlide(currentSlide);
+                    
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, 700);
+                } else {
+                    console.log('ПЕРВЫЙ СЛАЙД - ВЫХОДИМ ВВЕРХ');
+                    unlockAndContinue(false);
+                }
+            }
+        }
+        
+        function lockScrollFunc() {
+            if (isLocked) return;
+            
+            console.log('БЛОКИРУЕМ СКРОЛЛ');
+            isLocked = true;
+            hasEnteredSection = true;
+            lockScrollPosition = window.pageYOffset;
+            currentSlide = 0;
+            scrollAccumulator = 0;
+            showSlide(0);
+            
+            window.addEventListener('wheel', handleWheel, { passive: false });
+            
+            document.body.style.overflow = 'hidden';
+            document.body.style.height = '100vh';
+            
+            scrollLockInterval = setInterval(() => {
+                if (isLocked) {
+                    window.scrollTo(0, lockScrollPosition);
+                }
+            }, 16);
+        }
+        
+        function unlockAndContinue(goingDown) {
+            if (!isLocked) return;
+            
+            console.log('РАЗБЛОКИРОВКА');
+            
+            isLocked = false;
+            scrollAccumulator = 0;
+            
+            if (scrollLockInterval) {
+                clearInterval(scrollLockInterval);
+                scrollLockInterval = null;
+            }
+            
+            window.removeEventListener('wheel', handleWheel);
+            
+            document.body.style.overflow = '';
+            document.body.style.height = '';
+            
+            setTimeout(() => {
+                hasEnteredSection = false;
+            }, 1000);
+        }
+        
+        let ticking = false;
+        
+        function checkScrollPosition() {
+            if (isLocked || hasEnteredSection) return;
+            
+            const sectionRect = historySection.getBoundingClientRect();
+            const titleRect = sectionTitle.getBoundingClientRect();
+            
+            const viewportHeight = window.innerHeight;
+            const sectionInView = sectionRect.top < viewportHeight && sectionRect.bottom > 0;
+            
+            if (sectionInView && titleRect.top <= 100 && titleRect.top >= -50) {
+                lockScrollFunc();
+            }
+            
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', function() {
+            if (!ticking && !isLocked) {
+                window.requestAnimationFrame(checkScrollPosition);
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            if (currentSlide > 0 && !isTransitioning) {
+                isTransitioning = true;
+                currentSlide--;
+                showSlide(currentSlide);
+                setTimeout(() => isTransitioning = false, 600);
+            }
+        } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            if (currentSlide < TOTAL_SLIDES - 1 && !isTransitioning) {
+                isTransitioning = true;
+                currentSlide++;
+                showSlide(currentSlide);
+                setTimeout(() => isTransitioning = false, 600);
+            }
+        }
+    });
+});
