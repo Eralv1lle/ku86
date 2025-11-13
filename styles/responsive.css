@@ -885,9 +885,9 @@
     .timeline-content {
         position: relative;
         width: 100%;
-        height: 75vh;
-        max-height: 650px;
-        min-height: 480px;
+        height: 72vh;
+        max-height: 630px;
+        min-height: 470px;
         overflow: hidden;
     }
     
@@ -915,8 +915,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 3vh;
-        padding: 15px 8px;
+        gap: 2.5vh;
+        padding: 13px 7px;
         max-width: 100%;
     }
     
@@ -935,7 +935,7 @@
     }
     
     .year-text {
-        font-size: clamp(48px, 10vw, 68px);
+        font-size: clamp(46px, 9.5vw, 66px);
         letter-spacing: -1px;
         margin-bottom: 3px;
         line-height: 0.95;
@@ -952,7 +952,7 @@
         max-width: 100%;
         height: auto;
         flex-shrink: 0;
-        padding: clamp(18px, 4vh, 28px) clamp(12px, 3vw, 20px);
+        padding: clamp(16px, 3.5vh, 26px) clamp(10px, 2.5vw, 18px);
         border: 2px solid var(--accent);
         box-shadow: 0 6px 16px rgba(0,0,0,0.08);
         margin: 0 auto;
@@ -961,12 +961,12 @@
     }
     
     .timeline-services-inner {
-        gap: clamp(12px, 2.5vh, 18px);
+        gap: clamp(10px, 2.2vh, 16px);
     }
     
     .service-row {
         flex-direction: row;
-        gap: clamp(12px, 3vw, 18px);
+        gap: clamp(10px, 2.8vw, 16px);
         justify-content: center;
         align-items: center;
     }
@@ -979,8 +979,8 @@
     }
     
     .service-item img {
-        width: clamp(55px, 12vw, 68px);
-        height: clamp(55px, 12vw, 68px);
+        width: clamp(52px, 11.5vw, 66px);
+        height: clamp(52px, 11.5vw, 66px);
         margin-bottom: clamp(6px, 1.5vh, 10px);
     }
     
@@ -1031,6 +1031,52 @@
     }
 }
 
+@media (max-width: 760px) and (min-width: 577px) {
+    .timeline-content {
+        height: 70vh !important;
+        max-height: 610px !important;
+        min-height: 460px !important;
+    }
+    
+    .timeline-wrapper {
+        gap: 2.3vh !important;
+        padding: 12px 7px !important;
+    }
+    
+    .year-text {
+        font-size: clamp(44px, 9vw, 64px) !important;
+    }
+    
+    .komplektaciya-text {
+        font-size: clamp(13px, 3.2vw, 16px) !important;
+    }
+    
+    .timeline-services {
+        padding: clamp(15px, 3.2vh, 24px) clamp(9px, 2.3vw, 17px) !important;
+    }
+    
+    .timeline-services-inner {
+        gap: clamp(9px, 2vh, 15px) !important;
+    }
+    
+    .service-item img {
+        width: clamp(50px, 11vw, 64px) !important;
+        height: clamp(50px, 11vw, 64px) !important;
+    }
+    
+    .service-row {
+        gap: clamp(9px, 2.5vw, 15px) !important;
+    }
+    
+    .service-item {
+        padding: clamp(7px, 1.4vh, 11px) clamp(5px, 1.4vw, 9px) !important;
+    }
+    
+    .service-item span {
+        font-size: clamp(10px, 2.4vw, 11.5px) !important;
+    }
+}
+
 @media (max-width: 576px) {
     .history-timeline {
         padding: 35px 0;
@@ -1047,10 +1093,9 @@
     }
     
     .timeline-content {
-        height: 72vh;
-        max-height: 600px;
-        min-height: 450px;
-        overflow: hidden;
+        height: 68vh;
+        max-height: 570px;
+        min-height: 430px;
     }
     
     .timeline-slide {
@@ -1059,8 +1104,8 @@
     }
     
     .timeline-wrapper {
-        gap: 2.5vh;
-        padding: 12px 6px;
+        gap: 2.2vh;
+        padding: 10px 5px;
     }
     
     .year-text {
@@ -1075,7 +1120,7 @@
     
     .timeline-services {
         width: calc(100% - 8px);
-        padding: clamp(15px, 3.2vh, 22px) clamp(9px, 2.2vw, 15px);
+        padding: clamp(14px, 3vh, 20px) clamp(8px, 2vw, 14px);
         border: 2px solid var(--accent);
     }
     
@@ -1095,8 +1140,8 @@
     }
     
     .service-item img {
-        width: clamp(48px, 11vw, 60px);
-        height: clamp(48px, 11vw, 60px);
+        width: clamp(46px, 10.5vw, 58px);
+        height: clamp(46px, 10.5vw, 58px);
         margin-bottom: clamp(5px, 1vh, 8px);
     }
     
@@ -1131,6 +1176,167 @@
     }
 }
 
+@media (max-width: 434px) and (min-width: 400px) {
+    .timeline-content {
+        height: 66vh !important;
+        max-height: 540px !important;
+        min-height: 420px !important;
+    }
+    
+    .timeline-wrapper {
+        gap: 2vh !important;
+        padding: 9px 5px !important;
+    }
+    
+    .year-text {
+        font-size: clamp(40px, 8.5vw, 54px) !important;
+    }
+    
+    .timeline-services {
+        padding: clamp(13px, 2.8vh, 19px) clamp(8px, 2vw, 13px) !important;
+    }
+    
+    .timeline-services-inner {
+        gap: clamp(8px, 1.6vh, 13px) !important;
+    }
+    
+    .service-item img {
+        width: clamp(44px, 10vw, 56px) !important;
+        height: clamp(44px, 10vw, 56px) !important;
+    }
+    
+    .service-row {
+        gap: clamp(8px, 2vw, 13px) !important;
+    }
+}
+
+@media (max-width: 408px) and (min-width: 401px) {
+    .timeline-content {
+        height: 64vh !important;
+        max-height: 520px !important;
+        min-height: 410px !important;
+    }
+    
+    .timeline-wrapper {
+        gap: 1.8vh !important;
+        padding: 8px 4px !important;
+    }
+    
+    .year-text {
+        font-size: clamp(38px, 8vw, 52px) !important;
+    }
+    
+    .timeline-services {
+        padding: clamp(11px, 2.5vh, 17px) clamp(7px, 1.8vw, 12px) !important;
+    }
+    
+    .timeline-services-inner {
+        gap: clamp(7px, 1.5vh, 11px) !important;
+    }
+    
+    .service-item img {
+        width: clamp(42px, 9.5vw, 54px) !important;
+        height: clamp(42px, 9.5vw, 54px) !important;
+    }
+    
+    .service-row {
+        gap: clamp(7px, 1.8vw, 11px) !important;
+    }
+    
+    .service-item {
+        padding: clamp(6px, 1.2vh, 9px) clamp(5px, 1.2vw, 8px) !important;
+    }
+}
+
+@media (max-width: 402px) and (min-width: 401px) {
+    .timeline-content {
+        height: 62vh !important;
+        max-height: 500px !important;
+        min-height: 400px !important;
+    }
+    
+    .timeline-wrapper {
+        gap: 1.6vh !important;
+        padding: 7px 3px !important;
+    }
+    
+    .year-text {
+        font-size: 36px !important;
+        line-height: 0.9 !important;
+    }
+    
+    .komplektaciya-text {
+        font-size: 13px !important;
+    }
+    
+    .timeline-services {
+        padding: 10px 6px !important;
+    }
+    
+    .timeline-services-inner {
+        gap: 6px !important;
+    }
+    
+    .service-item img {
+        width: 40px !important;
+        height: 40px !important;
+        margin-bottom: 5px !important;
+    }
+    
+    .service-item span {
+        font-size: 9px !important;
+        line-height: 1.1 !important;
+    }
+    
+    .service-row {
+        gap: 6px !important;
+    }
+    
+    .service-item {
+        padding: 5px 4px !important;
+        min-width: 75px !important;
+    }
+    
+    .service-divider {
+        font-size: 16px !important;
+        margin: 4px 0 !important;
+    }
+}
+
+@media (max-width: 376px) {
+    .timeline-content {
+        height: 64vh !important;
+        max-height: 500px !important;
+        min-height: 380px !important;
+    }
+    
+    .timeline-wrapper {
+        gap: 1.5vh !important;
+        padding: 7px 4px !important;
+    }
+    
+    .year-text {
+        font-size: clamp(32px, 7vw, 45px) !important;
+    }
+    
+    .timeline-services {
+        padding: clamp(9px, 2vh, 15px) clamp(5px, 1.2vw, 9px) !important;
+    }
+    
+    .service-item img {
+        width: clamp(38px, 8vw, 48px) !important;
+        height: clamp(38px, 8vw, 48px) !important;
+    }
+    
+    .timeline-services-inner {
+        gap: clamp(5px, 1.2vh, 8px) !important;
+    }
+    
+    .service-row {
+        gap: clamp(5px, 1.4vw, 8px) !important;
+    }
+}
+
 @media (max-width: 400px) {
     .history-timeline {
         padding: 30px 0;
@@ -1154,12 +1360,12 @@
     }
     
     .timeline-wrapper {
-        gap: 2vh;
-        padding: 10px 5px;
+        gap: 1.8vh;
+        padding: 8px 4px;
     }
     
     .year-text {
-        font-size: clamp(38px, 8.5vw, 54px);
+        font-size: clamp(34px, 7.5vw, 48px);
     }
     
     .komplektaciya-text {
@@ -1169,15 +1375,15 @@
     
     .timeline-services {
         width: calc(100% - 6px);
-        padding: clamp(14px, 3vh, 20px) clamp(8px, 2vw, 14px);
+        padding: clamp(10px, 2.2vh, 16px) clamp(5px, 1.2vw, 10px);
     }
     
     .timeline-services-inner {
-        gap: clamp(7px, 1.6vh, 12px);
+        gap: clamp(6px, 1.4vh, 10px);
     }
     
     .service-row {
-        gap: clamp(8px, 2vw, 14px);
+        gap: clamp(6px, 1.5vw, 10px);
     }
     
     .service-item {
@@ -1187,8 +1393,8 @@
     }
     
     .service-item img {
-        width: clamp(42px, 9.5vw, 54px);
-        height: clamp(42px, 9.5vw, 54px);
+        width: clamp(40px, 8.5vw, 50px);
+        height: clamp(40px, 8.5vw, 50px);
         margin-bottom: clamp(4px, 0.8vh, 6px);
     }
     
@@ -1226,9 +1432,23 @@
         max-height: 520px;
         min-height: 400px;
     }
+
+    .timeline-wrapper {
+        gap: 1.8vh;
+        padding: 8px 4px;
+    }
+
+    .year-text {
+        font-size: clamp(34px, 7.5vw, 48px);
+    }
+
+    .service-item img {
+        width: clamp(40px, 8.5vw, 50px);
+        height: clamp(40px, 8.5vw, 50px);
+    }
     
     .year-text {
-        font-size: clamp(36px, 8vw, 50px);
+        font-size: clamp(32px, 7vw, 46px);
     }
     
     .komplektaciya-text {
@@ -1237,21 +1457,16 @@
     
     .timeline-services {
         width: calc(100% - 4px);
-        padding: clamp(12px, 2.8vh, 18px) clamp(7px, 1.8vw, 12px);
+        padding: clamp(10px, 2vh, 16px) clamp(5px, 1.2vw, 10px);
     }
     
     .service-row {
-        gap: clamp(7px, 1.8vw, 12px);
+        gap: clamp(5px, 1.4vw, 8px);
     }
     
     .service-item {
         min-width: 75px;
         max-width: 100px;
-    }
-    
-    .service-item img {
-        width: clamp(42px, 9vw, 52px);
-        height: clamp(42px, 9vw, 52px);
     }
     
     .service-item span {
@@ -1261,6 +1476,59 @@
     
     .service-divider {
         font-size: clamp(14px, 3vw, 16px);
+    }
+
+    .timeline-services-inner {
+        gap: clamp(5px, 1.2vh, 8px);
+    }
+}
+
+@media (max-width: 400px) and (min-width: 351px) {
+    .timeline-content {
+        height: 64vh;
+        max-height: 510px;
+        min-height: 385px;
+    }
+    
+    .timeline-wrapper {
+        gap: 1.6vh;
+        padding: 7px 4px;
+    }
+    
+    .year-text {
+        font-size: clamp(33px, 7.2vw, 47px);
+    }
+    
+    .timeline-services {
+        padding: clamp(9px, 2vh, 15px) clamp(5px, 1.2vw, 9px);
+    }
+    
+    .timeline-services-inner {
+        gap: clamp(5px, 1.3vh, 9px);
+    }
+    
+    .service-item img {
+        width: clamp(39px, 8.2vw, 49px);
+        height: clamp(39px, 8.2vw, 49px);
+    }
+    
+    .service-row {
+        gap: clamp(5px, 1.5vw, 9px);
+    }
+}
+
+@media (max-width: 322px) {
+    .timeline-content {
+        min-height: 360px;
+    }
+    
+    .year-text {
+        font-size: 30px !important;
+    }
+    
+    .service-item img {
+        width: 36px !important;
+        height: 36px !important;
     }
 }
 
